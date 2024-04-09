@@ -1,0 +1,23 @@
+<!-- <div *ngFor="let ingredient of ingredients">
+  <p>{{ingredient.name}}</p>
+  <ul>
+    <li *ngFor="let effect of ingredient.effects">{{effect}}</li>
+  </ul>
+</div> -->
+<label>Desired Effect: </label> <select value="selectedEff" #selectedEff (change)="chosenEffect(selectedEff)">
+  <Option>None Selected</Option>
+  <option *ngFor="let effect of effects">{{effect}}</option>
+</select>
+
+<div *ngIf="SIL else notChosen">
+   <ul>
+    <h3>Here's the list of ingredients that contain {{ selectedEff.value }}</h3>
+    <li *ngFor="let ingredient of ingredientsList">{{ingredient}}</li>
+  </ul>
+</div>
+
+<ng-template #notChosen>
+  <div>
+    <p>Please select the desired Effect you are looking for in a potion or poison.</p>
+  </div>
+</ng-template>
